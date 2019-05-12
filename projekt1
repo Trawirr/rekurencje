@@ -1,0 +1,116 @@
+'''
+Politechnika Gdańska, Wydział Fizyki Technicznej i Matematyki Stosowanej
+Matematyka Stosowana, rok 2.
+Marcin Garnowski
+'''
+
+# funkcja na sumę kolejnych liczb naturalnych,
+# n - liczba, do której funkcja sumuje liczby, musi być liczbą naturalną,
+# zwraca sumę liczb naturalnych od 0 do n.
+def suma(n):
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    else:
+        return n + suma(n - 1)
+
+# funkcja na silnię,
+# n - argument silni, musi być liczbą naturalną,
+# zwraca wartość wyrażenia n!.
+def silnia(n):
+    if n == 0:
+        return 1
+    else:
+        return n * silnia(n - 1)
+
+# funkcja na n-ty wyraz ciagu Lucasa,
+# n - który wyraz ciągu Lucasa, musi być liczbą naturalną,
+# zwraca n-ty wyraz ciągu Lucasa.
+def lucas(n):
+    if n == 0:
+        return 2
+    elif n == 1:
+        return 1
+    else:
+        return lucas(n - 1) + lucas(n - 2)
+
+# funkcja na n-ty wyraz ciągu Fibonacciego,
+# n - który wyraz ciągu Fibonacciego, musi być liczbą naturalną,
+# zwraca n-ty wyraz ciągu Fibonnaciego.
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+# funkcja zmieniająca zapis liczby z dziesiętnego na dwójkowy,
+# x - liczba w zapisie dziesietnym, musi być liczbą naturalną,
+# zwraca liczbę x w zapisie dwójkowym.
+def na_dwojkowy(x):
+    if x == 0:
+        return 0
+    else:
+        return x % 2 + 10 * (na_dwojkowy((x - x % 2) / 2))
+
+while True:
+
+    # menu
+    menu_choice = int(input("Wybierz funkcje:"
+                            + "\n1. suma n kolejnych liczb naturalnych"
+                            + "\n2. silnia"
+                            + "\n3. n-ta liczbę Lucasa"
+                            + "\n4. n-ta liczbę Fibonacciego"
+                            + "\n5. zapis dziesiętny na dwójkowy"
+                            + "\n6. Wyjdz\n"))
+
+    # funkcja nr 1 - suma kolejnych liczb naturalnych
+    if menu_choice == 1:
+        number = int(input("Suma kolejnych n liczb naturalnych\nn = "))
+        if number < 0 or type(number) is not int:
+            print("Niepoprawna wartosc!\n")
+            continue
+        print(suma(number))
+        pause = input()
+
+    # funkcja nr 2 - silnia
+    elif menu_choice == 2:
+        number = int(input("Silnia (n!)\nn = "))
+        if number < 0 or type(number) is not int:
+            print("Niepoprawna wartosc!\n")
+            continue
+        print(silnia(number))
+        pause = input()
+
+    # funkcja nr 3 - ciąg Lucasa
+    elif menu_choice == 3:
+        number = int(input("n-ta liczba Lucasa\nn = "))
+        if number < 0 or type(number) is not int:
+            print("Niepoprawna wartosc!\n")
+            continue
+        print(lucas(number))
+        pause = input()
+
+    # funkcja nr 4 - ciąg Fibonacciego
+    elif menu_choice == 4:
+        number = int(input("n-ta liczba Fibonnaciego\nn = "))
+        if number < 0 or type(number) is not int:
+            print("Niepoprawna wartosc!\n")
+            continue
+        print(fibonacci(number))
+        pause = input()
+
+    # funkcja nr 5 - zapis dwójkowy
+    elif menu_choice == 5:
+        number = int(input("Zamiana x na zapis dwójkowy\nx = "))
+        if number < 0 or type(number) is not int:
+            print("Niepoprawna wartosc!\n")
+            continue
+        print(int(na_dwojkowy(number)), "\n")
+        pause = input()
+
+    # zakończenie działania programu
+    else:
+        break
